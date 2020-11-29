@@ -33,7 +33,6 @@ Matrix::Matrix(const Matrix &matrix2) {
 
 //destructor
 Matrix::~Matrix() {
-    cout << "Destructor " << this << endl;
     for (int i = 0; i < Matrix::getRows(); i++) {
         delete [] Matrix::matrixArray[i];
     }
@@ -193,7 +192,6 @@ bool Matrix::operator ==(const Matrix &matrix2) {
 
     for (int i = 0; i < Matrix::getRows(); i++) {
         for (int j = 0; j < Matrix::getCols(); j++) {
-            cout << i << j << " " << to_string(Matrix::get(i, j)) << " " << to_string(matrix2.matrixArray[i][j]) << endl;
             if (abs(Matrix::get(i, j) - matrix2.matrixArray[i][j]) > EPSILON) {
                 return false;
             }
