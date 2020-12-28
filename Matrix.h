@@ -42,5 +42,6 @@ private:
     double** matrixArray;
     double** allocateMemoryToMatrixArray(int n, int m, double ** &matrixArray);
     void readFromFile(string path);
+    bool isElementPresent(int n, int m);
 };
 #endif //EX1_MATRIX_H

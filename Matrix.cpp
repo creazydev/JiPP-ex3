@@ -1,3 +1,7 @@
+//
+// Created by Kamil Nowak on 24/11/2020.
+//
+
 #include <iostream>
 #include <fstream>
 #include <math.h>
@@ -48,11 +52,19 @@ double** Matrix::allocateMemoryToMatrixArray(int n, int m, double ** &array) {
 }
 
 void Matrix::set(int n, int m, double val) {
-    Matrix::matrixArray[n][m] = val;
+    if (isElementPresent(n, m)) {
+        Matrix::matrixArray[n][m] = val;
+    } else {
+        cout << "Cannot set value. Given row or column number is invalid.";
+    }
 }
 
 double Matrix::get(int n, int m) {
-    return Matrix::matrixArray[n][m];
+    if (isElementPresent(n, m)) {
+        return Matrix::matrixArray[n][m];
+    } else {
+        cout << "Cannot get value. Given row or column number is invalid.";
+    }
 }
 
 int Matrix::getCols() {
@@ -207,4 +219,12 @@ list<double> Matrix::operator[](int rowIndex) {
         rowValues.push_back(Matrix::get(rowIndex, i));
     }
     return rowValues;
+}
+
+bool Matrix::isElementPresent(int n, int m) {
+    if (0 <= n <= Matrix::rows && 0 <= m <= Matrix::columns) {
+        return true;
+    } else {
+        return false;
+    }
 }
